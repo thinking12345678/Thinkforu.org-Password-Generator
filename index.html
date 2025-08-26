@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Advanced Password Generator | Create Secure Random Passwords</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Generate secure, random passwords with our advanced password generator. Customize length, include special characters, numbers, and more for maximum security." />
+  <meta name="keywords" content="password generator, random password, secure password, strong password, password security, password creator" />
+  <meta name="author" content="Your Name" />
+  <meta property="og:title" content="Advanced Password Generator | Create Secure Random Passwords" />
+  <meta property="og:description" content="Generate secure, random passwords with our advanced password generator. Customize length, include special characters, numbers, and more for maximum security." />
+ 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Random Password Generator - Secure & Free Online Tool",
+  "description": "Generate strong, secure, and random passwords instantly with this free online Random Password Generator. Create passwords with customizable length and complexity.",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Web",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "ThinkForU.org",
+    "url": "https://www.thinkforu.org"
+  }
+}
+</script>
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary-color: #6200ea;
+      --primary-dark: #3700b3;
+      --secondary-color: #03dac6;
+      --text-color: #333333;
+      --light-bg: #f5f0ff;
+      --white: #ffffff;
+      --gray: #f0f0f0;
+      --dark-gray: #666666;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 20px 0;
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Generator Section */
+    .generator-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .input-section, .result-section {
+      flex: 1;
+      min-width: 300px;
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gray);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .input-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="number"], input[type="text"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid var(--gray);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    input[type="number"]:focus, input[type="text"]:focus {
+      border-color: var(--primary-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(98, 0, 234, 0.2);
+    }
+
+    .checkbox-group {
+      margin-top: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .checkbox-item label {
+      display: inline;
+      cursor: pointer;
+    }
+
+    .generate-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 10px;
+    }
+
+    .generate-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .reset-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--gray);
+      color: var(--dark-gray);
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 10px;
+    }
+
+    .reset-btn:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Results Section */
+    .result-section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-box {
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: var(--light-bg);
+      border-radius: var(--border-radius);
+    }
+
+    .result-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+
+    .password-display {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .password-field {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-family: monospace;
+      background-color: var(--white);
+      border: 2px solid var(--gray);
+      border-radius: var(--border-radius);
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .copy-btn:hover {
+      background-color: #02b8a7;
+    }
+
+    .password-strength {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px 0;
+    }
+
+    .strength-meter {
+      height: 8px;
+      flex: 1;
+      margin: 0 2px;
+      border-radius: 4px;
+      background-color: var(--gray);
+    }
+
+    .strength-meter.active {
+      background-color: var(--primary-color);
+    }
+
+    .strength-text {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 5px;
+      color: var(--primary-color);
+    }
+
+    .password-info {
+      margin-top: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .info-icon {
+      min-width: 24px;
+      height: 24px;
+      background-color: var(--secondary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .info-text {
+      font-size: 0.95rem;
+    }
+
+    /* Tools Navigation */
+    .tools-nav {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 30px;
+    }
+
+    .tools-nav h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+    }
+
+    .tools-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .tool-btn {
+      padding: 12px 20px;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .tool-btn:hover {
+      background-color: #02b8a7;
+      transform: translateY(-2px);
+    }
+
+    /* Guide and FAQ Section */
+    .guide-section {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 30px;
+    }
+
+    .guide-section h2 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .guide-content {
+      margin-bottom: 30px;
+    }
+
+    .guide-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .guide-content p, .guide-content li {
+      margin-bottom: 10px;
+    }
+
+    .guide-content ul {
+      padding-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+    }
+
+    .faq-question.active::after {
+      content: '-';
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 10px;
+      background-color: var(--light-bg);
+      border-radius: var(--border-radius);
+    }
+
+    .faq-answer.show {
+      display: block;
+    }
+
+    /* Share Section */
+    .share-section {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--box-shadow);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .share-section h2 {
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .share-btn {
+      padding: 10px 15px;
+      border-radius: var(--border-radius);
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .share-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .facebook {
+      background-color: #3b5998;
+    }
+
+    .twitter {
+      background-color: #1da1f2;
+    }
+
+    .whatsapp {
+      background-color: #25d366;
+    }
+
+    .pinterest {
+      background-color: #bd081c;
+    }
+
+    .email {
+      background-color: #dd4b39;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    footer p {
+      color: var(--dark-gray);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .generator-section {
+        flex-direction: column;
+      }
+
+      .tools-buttons {
+        flex-direction: column;
+      }
+
+      .tool-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 10px;
+      }
+
+      header, .input-section, .result-section, .guide-section, .share-section, .tools-nav, footer {
+        padding: 15px;
+      }
+
+      .share-buttons {
+        flex-wrap: wrap;
+      }
+
+      .share-btn {
+        flex: 1 0 40%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>Thinkforu.org Random Password Generator</h1>
+      <p>Create strong, secure, and random passwords with our advanced generator. Customize your password to meet specific requirements and enhance your online security.</p>
+    </header>
+
+    <!-- Generator Section -->
+    <section class="generator-section">
+      <!-- Input Section -->
+      <div class="input-section">
+        <h2 class="section-title">Password Options</h2>
+        <form id="password-generator-form">
+          <div class="form-group">
+            <label for="password-length">Password Length</label>
+            <div class="input-wrapper">
+              <input type="number" id="password-length" value="12" min="4" max="64" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Include Characters:</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="include-uppercase" checked>
+                <label for="include-uppercase">Uppercase Letters (A-Z)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="include-lowercase" checked>
+                <label for="include-lowercase">Lowercase Letters (a-z)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="include-numbers" checked>
+                <label for="include-numbers">Numbers (0-9)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="include-symbols" checked>
+                <label for="include-symbols">Special Characters (!@#$%^&*)</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exclude-similar">Exclude Similar Characters:</label>
+            <div class="checkbox-item">
+              <input type="checkbox" id="exclude-similar">
+              <label for="exclude-similar">Exclude similar characters (i, l, 1, L, o, 0, O)</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exclude-ambiguous">Exclude Ambiguous Characters:</label>
+            <div class="checkbox-item">
+              <input type="checkbox" id="exclude-ambiguous">
+              <label for="exclude-ambiguous">Exclude ambiguous characters ({ } [ ] ( ) / \ ' " ` ~ , ; : . < >)</label>
+            </div>
+          </div>
+
+          <button type="button" class="generate-btn" onclick="generatePassword()">Generate Password</button>
+          <button type="button" class="reset-btn" onclick="resetForm()">Reset Options</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="result-section">
+        <h2 class="section-title">Your Generated Password</h2>
+        <div class="result-box">
+          <div class="result-title">Secure Password</div>
+          <div class="password-display">
+            <input type="text" id="password-result" class="password-field" value="Click Generate to create a password" readonly>
+            <button class="copy-btn" onclick="copyPassword()">Copy</button>
+          </div>
+          
+          <div class="password-strength">
+            <div class="strength-meter" id="meter-1"></div>
+            <div class="strength-meter" id="meter-2"></div>
+            <div class="strength-meter" id="meter-3"></div>
+            <div class="strength-meter" id="meter-4"></div>
+          </div>
+          <div class="strength-text" id="strength-text">Password Strength</div>
+        </div>
+
+        <div class="password-info">
+          <h3>Password Security Tips:</h3>
+          <div class="info-item">
+            <div class="info-icon">1</div>
+            <div class="info-text">Use a different password for each account to prevent multiple breaches if one password is compromised.</div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">2</div>
+            <div class="info-text">Consider using a password manager to securely store your complex passwords.</div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">3</div>
+            <div class="info-text">Enable two-factor authentication (2FA) whenever possible for an extra layer of security.</div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">4</div>
+            <div class="info-text">Change your passwords regularly, especially for sensitive accounts like banking and email.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Navigation -->
+    <section class="tools-nav">
+      <h2>Explore Our Other Helpful Tools</h2>
+      <div class="tools-buttons">
+        <a href="https://www.thinkforu.org/p/bra-size-calculator-find-your-perfect.html" class="tool-btn">Bra Size Calculator</a>
+        <a href="https://www.thinkforu.org/p/calorie-calculator-find-your-daily.html" class="tool-btn">Calorie Calculator</a>
+        <a href="https://www.thinkforu.org/p/100-free-bmi-calculator-check-your-body.html" class="tool-btn">BMI Calculator</a>
+        <a href="https://www.thinkforu.org/p/advance-age-calculator-calculate-your.html" class="tool-btn">Advance Age Calculator</a>
+        <a href="https://www.thinkforu.org/p/advanced-date-calculator-calculate-date.html" class="tool-btn">Date Calculator</a>
+        <a href="https://www.thinkforu.org/p/advance-unit-converter-convert-length.html" class="tool-btn">Unit Converter </a>
+        <a href="https://www.thinkforu.org/p/note-taking-save-notes-offline-100-free.html" class="tool-btn">Note Taking</a>
+      </div>
+    </section>
+
+    <!-- Guide and FAQ Section -->
+    <section class="guide-section">
+      <h2>Password Security Guide</h2>
+      
+      <div class="guide-content">
+        <h3>Why Password Security Matters</h3>
+        <p>In today's digital world, strong passwords are your first line of defense against unauthorized access to your accounts and personal information. Weak passwords can be cracked in seconds by modern hacking tools, potentially leading to identity theft, financial loss, and privacy breaches.</p>
+        
+        <h3>What Makes a Strong Password?</h3>
+        <p>A strong password typically has the following characteristics:</p>
+        <ul>
+          <li><strong>Length:</strong> At least 12 characters long (the longer, the better)</li>
+          <li><strong>Complexity:</strong> A mix of uppercase and lowercase letters, numbers, and special characters</li>
+          <li><strong>Unpredictability:</strong> Avoids common words, phrases, or patterns</li>
+          <li><strong>Uniqueness:</strong> Different from passwords used for other accounts</li>
+          <li><strong>No personal information:</strong> Avoids using names, birthdays, or other easily guessable personal details</li>
+        </ul>
+        
+        <h3>Common Password Mistakes to Avoid</h3>
+        <ul>
+          <li><strong>Using simple passwords:</strong> Like "password," "123456," or "qwerty"</li>
+          <li><strong>Reusing passwords:</strong> Using the same password across multiple sites</li>
+          <li><strong>Minor variations:</strong> Making only small changes to a base password (e.g., Password1, Password2)</li>
+          <li><strong>Personal information:</strong> Using your name, birthday, or other personal details</li>
+          <li><strong>Dictionary words:</strong> Using common words that can be easily cracked with dictionary attacks</li>
+          <li><strong>Writing passwords down:</strong> Storing passwords on sticky notes or unencrypted files</li>
+        </ul>
+        
+        <h3>Password Management Best Practices</h3>
+        <p>Managing multiple complex passwords can be challenging. Here are some strategies to help:</p>
+        <ul>
+          <li><strong>Use a password manager:</strong> Tools like LastPass, 1Password, or Bitwarden can generate and store strong, unique passwords for all your accounts</li>
+          <li><strong>Enable two-factor authentication (2FA):</strong> Adds an extra layer of security beyond just your password</li>
+          <li><strong>Change passwords regularly:</strong> Especially for critical accounts like banking and email</li>
+          <li><strong>Check for breaches:</strong> Use services like Have I Been Pwned to check if your accounts have been compromised</li>
+          <li><strong>Use passphrases:</strong> Consider using long phrases that are easy for you to remember but hard for others to guess</li>
+        </ul>
+      </div>
+      
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-content">
+        <div class="faq-item">
+          <div class="faq-question">How often should I change my passwords?</div>
+          <div class="faq-answer">
+            Current security recommendations have shifted away from mandatory password changes every 30-90 days, as this often leads to weaker passwords. Instead, it's better to create strong, unique passwords and change them only when there's a reason to believe they may have been compromised. However, for highly sensitive accounts (banking, email), changing passwords every 3-6 months is still a good practice.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Are password managers safe to use?</div>
+          <div class="faq-answer">
+            Yes, reputable password managers are generally very safe. They use strong encryption to protect your password vault, and most security experts recommend using them. The security benefit of having unique, strong passwords for all your accounts far outweighs the theoretical risk of a password manager breach. Just make sure to use a very strong master password and enable two-factor authentication for your password manager account.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What's better: a complex short password or a simple long one?</div>
+          <div class="faq-answer">
+            Length typically trumps complexity. A longer password, even if somewhat simpler, is generally more secure than a short complex one. For example, a passphrase like "correct-horse-battery-staple" (without quotes) is both easier to remember and more secure than a short complex password like "P@$$w0rd". However, the ideal password combines both length and complexity.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">How can I remember all my passwords without writing them down?</div>
+          <div class="faq-answer">
+            The most secure and practical solution is to use a password manager, which requires you to remember only one strong master password. Alternatively, you can use the passphrase method, where you create memorable but secure phrases for important accounts. For less critical accounts, you might use a system where you combine a base phrase with something specific to each website, though this is less secure than using completely unique passwords.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Is it safe to save passwords in my browser?</div>
+          <div class="faq-answer">
+            Browser password managers have improved significantly in recent years, but they generally offer less security than dedicated password managers. If you do use browser password storage, make sure your device is secured with a strong password, enable two-factor authentication for your browser account (e.g., Google account for Chrome), and keep your browser updated. For sensitive accounts like banking, consider using a dedicated password manager instead.
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What should I do if I suspect my password has been compromised?</div>
+          <div class="faq-answer">
+            If you suspect a password breach, act quickly: 1) Change the password immediately for that account, 2) Change passwords for any other accounts that used the same or similar password, 3) Check for any unauthorized activity, 4) Enable two-factor authentication if available, 5) Monitor your accounts for suspicious activity, and 6) Consider using a service like Have I Been Pwned to check if your email has been involved in known data breaches.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share-section">
+      <h2>Found This Helpful? Share With Friends!</h2>
+      <p>Help others create secure passwords by sharing this generator.</p>
+      <div class="share-buttons">
+        <a href="#" class="share-btn facebook" onclick="shareOnFacebook()">Facebook</a>
+        <a href="#" class="share-btn twitter" onclick="shareOnTwitter()">Twitter</a>
+        <a href="#" class="share-btn whatsapp" onclick="shareOnWhatsApp()">WhatsApp</a>
+        <a href="#" class="share-btn pinterest" onclick="shareOnPinterest()">Pinterest</a>
+        <a href="#" class="share-btn email" onclick="shareByEmail()">Email</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© Thinkforu.org Advanced Password Generator. All rights reserved.</p>
+      <p>This tool is for reference only. Always follow your organization's security policies.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Generate password
+    function generatePassword() {
+      // Get options
+      const length = parseInt(document.getElementById('password-length').value);
+      const includeUppercase = document.getElementById('include-uppercase').checked;
+      const includeLowercase = document.getElementById('include-lowercase').checked;
+      const includeNumbers = document.getElementById('include-numbers').checked;
+      const includeSymbols = document.getElementById('include-symbols').checked;
+      const excludeSimilar = document.getElementById('exclude-similar').checked;
+      const excludeAmbiguous = document.getElementById('exclude-ambiguous').checked;
+      
+      // Validate options
+      if (!includeUppercase && !includeLowercase && !includeNumbers && !includeSymbols) {
+        alert('Please select at least one character type.');
+        return;
+      }
+      
+      if (length < 4 || length > 64) {
+        alert('Password length must be between 4 and 64 characters.');
+        return;
+      }
+      
+      // Define character sets
+      let chars = '';
+      const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+      const numberChars = '0123456789';
+      const symbolChars = '!@#$%^&*()-_=+[]{};:,.<>/?';
+      
+      // Similar characters to exclude if option is selected
+      const similarChars = 'il1Lo0O';
+      // Ambiguous characters to exclude if option is selected
+      const ambiguousChars = '{}[]()/\\\'"`~,;:.<>';
+      
+      // Build character set based on options
+      if (includeUppercase) chars += uppercaseChars;
+      if (includeLowercase) chars += lowercaseChars;
+      if (includeNumbers) chars += numberChars;
+      if (includeSymbols) chars += symbolChars;
+      
+      // Remove excluded characters
+      if (excludeSimilar) {
+        for (let i = 0; i < similarChars.length; i++) {
+          chars = chars.replace(similarChars[i], '');
+        }
+      }
+      
+      if (excludeAmbiguous) {
+        for (let i = 0; i < ambiguousChars.length; i++) {
+          chars = chars.replace(ambiguousChars[i], '');
+        }
+      }
+      
+      // Generate password
+      let password = '';
+      const charsLength = chars.length;
+      
+      // Ensure at least one character from each selected type
+      let requiredChars = '';
+      
+      if (includeUppercase) {
+        const char = getRandomChar(excludeSimilar || excludeAmbiguous ? 
+          removeExcludedChars(uppercaseChars, excludeSimilar ? similarChars : '', excludeAmbiguous ? ambiguousChars : '') : 
+          uppercaseChars);
+        requiredChars += char;
+      }
+      
+      if (includeLowercase) {
+        const char = getRandomChar(excludeSimilar || excludeAmbiguous ? 
+          removeExcludedChars(lowercaseChars, excludeSimilar ? similarChars : '', excludeAmbiguous ? ambiguousChars : '') : 
+          lowercaseChars);
+        requiredChars += char;
+      }
+      
+      if (includeNumbers) {
+        const char = getRandomChar(excludeSimilar ? 
+          removeExcludedChars(numberChars, similarChars, '') : 
+          numberChars);
+        requiredChars += char;
+      }
+      
+      if (includeSymbols) {
+        const char = getRandomChar(excludeAmbiguous ? 
+          removeExcludedChars(symbolChars, '', ambiguousChars) : 
+          symbolChars);
+        requiredChars += char;
+      }
+      
+      // Add required characters
+      password = requiredChars;
+      
+      // Fill the rest of the password
+      for (let i = requiredChars.length; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charsLength);
+        password += chars.charAt(randomIndex);
+      }
+      
+      // Shuffle the password to mix the required characters
+      password = shuffleString(password);
+      
+      // Display the password
+      document.getElementById('password-result').value = password;
+      
+      // Update password strength
+      updatePasswordStrength(password);
+    }
+    
+    // Helper function to remove excluded characters
+    function removeExcludedChars(source, similarChars, ambiguousChars) {
+      let result = source;
+      
+      for (let i = 0; i < similarChars.length; i++) {
+        result = result.replace(similarChars[i], '');
+      }
+      
+      for (let i = 0; i < ambiguousChars.length; i++) {
+        result = result.replace(ambiguousChars[i], '');
+      }
+      
+      return result;
+    }
+    
+    // Helper function to get a random character from a string
+    function getRandomChar(charSet) {
+      const randomIndex = Math.floor(Math.random() * charSet.length);
+      return charSet.charAt(randomIndex);
+    }
+    
+    // Helper function to shuffle a string
+    function shuffleString(string) {
+      const array = string.split('');
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array.join('');
+    }
+    
+    // Update password strength indicator
+    function updatePasswordStrength(password) {
+      // Reset strength meters
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`meter-${i}`).classList.remove('active');
+      }
+      
+      // Calculate password strength
+      let strength = 0;
+      
+      // Length check
+      if (password.length >= 8) strength += 1;
+      if (password.length >= 12) strength += 1;
+      
+      // Character variety check
+      if (/[A-Z]/.test(password) && /[a-z]/.test(password)) strength += 1;
+      if (/[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) strength += 1;
+      
+      // Update strength meter
+      for (let i = 1; i <= strength; i++) {
+        document.getElementById(`meter-${i}`).classList.add('active');
+      }
+      
+      // Update strength text
+      const strengthText = document.getElementById('strength-text');
+      switch (strength) {
+        case 0:
+          strengthText.textContent = 'Very Weak';
+          strengthText.style.color = '#ff4d4d';
+          break;
+        case 1:
+          strengthText.textContent = 'Weak';
+          strengthText.style.color = '#ffa64d';
+          break;
+        case 2:
+          strengthText.textContent = 'Moderate';
+          strengthText.style.color = '#ffff4d';
+          break;
+        case 3:
+          strengthText.textContent = 'Strong';
+          strengthText.style.color = '#4dff4d';
+          break;
+        case 4:
+          strengthText.textContent = 'Very Strong';
+          strengthText.style.color = '#4d4dff';
+          break;
+      }
+    }
+    
+    // Copy password to clipboard
+    function copyPassword() {
+      const passwordField = document.getElementById('password-result');
+      
+      // Check if password has been generated
+      if (passwordField.value === 'Click Generate to create a password') {
+        alert('Please generate a password first.');
+        return;
+      }
+      
+      // Select the password
+      passwordField.select();
+      passwordField.setSelectionRange(0, 99999); // For mobile devices
+      
+      // Copy to clipboard
+      document.execCommand('copy');
+      
+      // Deselect the text
+      window.getSelection().removeAllRanges();
+      
+      // Change button text temporarily
+      const copyBtn = document.querySelector('.copy-btn');
+      const originalText = copyBtn.textContent;
+      copyBtn.textContent = 'Copied!';
+      
+      // Reset button text after 2 seconds
+      setTimeout(() => {
+        copyBtn.textContent = originalText;
+      }, 2000);
+    }
+    
+    // Reset form
+    function resetForm() {
+      document.getElementById('password-generator-form').reset();
+      document.getElementById('password-length').value = 12;
+      document.getElementById('include-uppercase').checked = true;
+      document.getElementById('include-lowercase').checked = true;
+      document.getElementById('include-numbers').checked = true;
+      document.getElementById('include-symbols').checked = true;
+      document.getElementById('exclude-similar').checked = false;
+      document.getElementById('exclude-ambiguous').checked = false;
+      
+      document.getElementById('password-result').value = 'Click Generate to create a password';
+      
+      // Reset strength meters
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`meter-${i}`).classList.remove('active');
+      }
+      
+      // Reset strength text
+      document.getElementById('strength-text').textContent = 'Password Strength';
+      document.getElementById('strength-text').style.color = 'var(--primary-color)';
+    }
+    
+    // FAQ toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const answer = this.nextElementSibling;
+          answer.classList.toggle('show');
+        });
+      });
+    });
+    
+    // Share functions
+    function shareOnFacebook() {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent('Advanced Password Generator - Create Secure Random Passwords!');
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${title}`, '_blank');
+    }
+    
+    function shareOnTwitter() {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent('I just created a secure password with this amazing generator! Check it out:');
+      window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+    }
+    
+    function shareOnWhatsApp() {
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent('Check out this amazing password generator:');
+      window.open(`https://wa.me/?text=${text} ${url}`, '_blank');
+    }
+    
+    function shareOnPinterest() {
+      const url = encodeURIComponent(window.location.href);
+      const description = encodeURIComponent('Advanced Password Generator - Create Secure Random Passwords!');
+      window.open(`https://pinterest.com/pin/create/button/?url=${url}&description=${description}`, '_blank');
+    }
+    
+    function shareByEmail() {
+      const subject = encodeURIComponent('Advanced Password Generator');
+      const body = encodeURIComponent(`I thought you might find this password generator helpful: ${window.location.href}`);
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>

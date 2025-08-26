@@ -1,3 +1,7 @@
+<img width="1093" height="619" alt="image" src="https://github.com/user-attachments/assets/e877a948-dca2-429d-a1c6-77154dc129a2" />
+
+
+
 # 🔐 Thinkforu.org Password Generator  
 
 A free, simple, and secure **Password Generator Tool** built for students, professionals, and small businesses.  
